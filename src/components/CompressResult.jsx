@@ -47,7 +47,7 @@ const CompressResult = () => {
   const handleDownload = async () => {
     if (compressedFilePath) {
       try {
-        const response = await fetch(`http://localhost:8000/download/?file_path=${encodeURIComponent(compressedFilePath)}`);
+        const response = await fetch(`https://pruebaartify-backend-prueba.onrender.com/docs#/default/download_file_download__get?file_path=${encodeURIComponent(compressedFilePath)}`);
         const blob = await response.blob();
         const url = window.URL.createObjectURL(new Blob([blob]));
         const link = document.createElement('a');

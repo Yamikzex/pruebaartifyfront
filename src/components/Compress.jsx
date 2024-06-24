@@ -62,7 +62,7 @@ const CompressComponent = () => {
     formData.append("quality", 20); // Ajustar la calidad de compresión aquí
 
     try {
-      const response = await axios.post("http://localhost:8000/compress-image/", formData, {
+      const response = await axios.post("https://pruebaartify-backend-prueba.onrender.com/docs#/default/compress_image_compress_image__post", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
