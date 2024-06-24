@@ -44,17 +44,24 @@ const CompressResult = () => {
     fetchImageSize();
   }, [compressedFilePath]);
 
-  const handleDownload = (event) => {
-    event.preventDefault(); // Evitar el comportamiento predeterminado del navegador
+  const handleDownload = async () => {
     if (compressedFilePath) {
-      const link = document.createElement("a");
-      link.href = `http://localhost:8000/${compressedFilePath}`;
-      link.download = compressedFilePath.split('/').pop(); // Establecer el atributo de descarga con el nombre del archivo
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      try {
+        const response = await fetch(`http://localhost:8000/download/?file_path=${encodeURIComponent(compressedFilePath)}`);
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', compressedFilePath.split('/').pop());
+        document.body.appendChild(link);
+        link.click();
+        link.parentNode.removeChild(link);
+      } catch (error) {
+        console.error('Error downloading file:', error);
+      }
     }
   };
+  
 
   return (
     <div className="compress-result">

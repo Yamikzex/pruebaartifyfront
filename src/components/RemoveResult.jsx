@@ -24,6 +24,7 @@ const RemoveResult = () => {
     setZoom(newZoomLevel);
   };
 
+  
   useEffect(() => {
     const handleMouseMove = (e) => {
       if (isDragging) {
@@ -69,7 +70,7 @@ const RemoveResult = () => {
     const link = document.createElement("a");
     link.href = downloadUrl;
     link.setAttribute('download', 'image.png'); // Cambia 'image.png' al nombre de archivo deseado
-    document.body.appendChild(link);
+    document.body.appendChild(link);  
     link.click();
     document.body.removeChild(link);
   };
@@ -89,26 +90,26 @@ const RemoveResult = () => {
 
   const applyFilter = async (filter) => {
     try {
-      const formData = new FormData();
-      const response = await fetch(imageUrl);
-      const blob = await response.blob();
-      formData.append('file', blob, 'image.png');
-      formData.append('filter_name', filter);
+        const formData = new FormData();
+        const response = await fetch(imageUrl);
+        const blob = await response.blob();
+        formData.append('file', blob, 'image.png');
+        formData.append('filter_name', filter);
 
-      const res = await fetch('http://localhost:8000/apply-filter/', {
-        method: 'POST',
-        body: formData,
-      });
+        const res = await fetch('http://localhost:8000/apply-filter/', {
+            method: 'POST',
+            body: formData,
+        });
 
-      const result = await res.json();
-      if (res.ok) {
-        setFilteredImageUrl(`http://localhost:8000/download/?file_path=${encodeURIComponent(result.filtered_file_path)}`);
-        setSelectedFilter(filter);
-      } else {
-        console.error('Error applying filter:', result.error);
-      }
+        const result = await res.json();
+        if (res.ok) {
+            setFilteredImageUrl(`http://localhost:8000/download/?file_path=${encodeURIComponent(result.filtered_file_path)}`);
+            setSelectedFilter(filter);
+        } else {
+            console.error('Error applying filter:', result.error);
+        }
     } catch (error) {
-      console.error('Error applying filter:', error);
+        console.error('Error applying filter:', error);
     }
   };
 
