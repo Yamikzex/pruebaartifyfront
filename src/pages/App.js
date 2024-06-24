@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Start from '../pages/start';
 import RemoveBackground from '../pages/RemoveB';
 import Changeformat from '../pages/ChangeF';
@@ -15,12 +15,7 @@ function App() {
       <div className="App">
         <header className="App-header">
           <Routes>
-            <Route path="/" element={
-              <>
-                <Start />
-                <Login />
-              </>
-            } />
+            <Route path="/" element={<><Start /><Login /></>} />
             <Route path="/remove-background" element={<RemoveBackground />} />
             <Route path="/change-format" element={<Changeformat />} />
             <Route path="/compress" element={<CompressPage />} />

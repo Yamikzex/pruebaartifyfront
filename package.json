@@ -1,5 +1,5 @@
 {
-  "homepage": "https://Yamikzex.github.io/pruebaartify",
+  "homepage": "https://Yamikzex.github.io/pruebaartifyfront",
   "name": "artify",
   "version": "0.1.0",
   "private": true,
@@ -11,7 +11,6 @@
     "cropperjs": "^1.6.2",
     "dropzone": "^6.0.0-beta.2",
     "file-saver": "^2.0.5",
-    "gh-pages": "^6.1.1",
     "ionicons": "^7.4.0",
     "react": "^18.3.1",
     "react-cropper": "^2.3.3",
@@ -47,5 +46,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
   }
 }
