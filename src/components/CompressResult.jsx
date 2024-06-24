@@ -32,7 +32,7 @@ const CompressResult = () => {
     const fetchImageSize = async () => {
       if (compressedFilePath) {
         try {
-          const response = await fetch(`http://localhost:8000/${compressedFilePath}`);
+          const response = await fetch(`https://pruebaartify-backend-prueba.onrender.com/docs#/default/compress_image_compress_image__post/${compressedFilePath}`);
           const blob = await response.blob();
           setImageSize((blob.size / 1024).toFixed(2)); // Convertir a KB y establecer el tamaño
         } catch (error) {
